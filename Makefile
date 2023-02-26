@@ -28,3 +28,7 @@ npm-dev:
 
 npm-build:
 	@docker-compose run --rm npm run build
+
+test: ## Run tests dev environment
+	@echo "Run tests"
+	${DOCKER_COMPOSE_EXEC_APP} php artisan test $(if $(filter),--filter $(filter),)
