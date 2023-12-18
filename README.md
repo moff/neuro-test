@@ -3,16 +3,6 @@
 - clone the repository
 - run command `cp .env.example .env` and set credentials for databases (dev and test) in that file
 - cd into the cloned repository directory
-- create application directory `mkdir application`
-- install Laravel using command:
-```
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v $(pwd)/application:/var/www/html \
-    -w /var/www/html \
-    laravelsail/php82-composer:latest \
-    composer create-project laravel/laravel .
-```
 - start the app using command `docker-compose up -d`
 
 To ensure that the app is up and running open `http://localhost:8082/` in a browser
