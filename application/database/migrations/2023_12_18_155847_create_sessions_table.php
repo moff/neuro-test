@@ -37,6 +37,7 @@ return new class extends Migration
                 ->restrictOnDelete(); // setting restriction explicitly
 
             // I kept both timestamps, if we need to optimize space used, then we can create only one
+            // I'm not sure if I should use Unix timestamp (integer column) instead of the default, it depends
             $table->timestamps();
 
             // Since we plan to have A LOT of entries in this table AND we plan to order by timestamp,
