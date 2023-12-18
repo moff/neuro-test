@@ -10,6 +10,8 @@
 
 To ensure that the app is up and running open `http://localhost:8082/` in a browser
 
+!!! [Database diagram file](NeuroDB.png)
+
 # Running tests
 
 Migrate test database using command `docker-compose exec -u laravel app php artisan migrate:fresh --database=mysql-testing`
