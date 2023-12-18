@@ -10,6 +10,9 @@ up: ## Up doker-compose project.
 # 	@$(MAKE) --no-print-directory bash-history
 	@docker-compose up -d
 
+rebuild:
+	@docker-compose build --no-cache
+
 art: ## Alias to artisan. Takes string.
 	@$(eval CMD_ARGS = $(filter-out $@,$(MAKECMDGOALS)))
 	${DOCKER_COMPOSE_EXEC_APP} php artisan ${CMD_ARGS}
@@ -28,6 +31,9 @@ npm-dev:
 
 npm-build:
 	@docker-compose run --rm npm run build
+
+migrate-test-db:
+	${DOCKER_COMPOSE_EXEC_APP} php artisan migrate:fresh --database=mysql-testing
 
 test: ## Run tests dev environment
 	@echo "Run tests"
