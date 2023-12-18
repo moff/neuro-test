@@ -10,6 +10,9 @@ up: ## Up doker-compose project.
 # 	@$(MAKE) --no-print-directory bash-history
 	@docker-compose up -d
 
+composer-install:
+	${DOCKER_COMPOSE_RUN_APP} composer install --prefer-dist --optimize-autoloader
+
 rebuild:
 	@docker-compose build --no-cache
 
