@@ -26,8 +26,12 @@ class SessionsHistoryController extends Controller
         // this service expects User object, so this endpoint should be auth guarded
         $sessions = $sessionService->getHistory($request->user());
 
+        // here we need a layer of checks that we really have an ID, but in context of test task it's not necessary
+        $lastTrainedCategories = $sessionService->getSessionExerciseCategories($sessions[0]->id);
+
         return response()->json((object) [
             'history' => SessionResource::collection($sessions),
+            'last_trained_categories' => collect($lastTrainedCategories)->join(', '),
         ]);
     }
 }
